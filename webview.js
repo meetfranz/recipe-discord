@@ -30,7 +30,9 @@ module.exports = Franz => {
       const badge = badges[i];
       if(badge && badge.childNodes && badge.childNodes.length > 0) {
         const count = parseInt(badge.childNodes[0].nodeValue, 10);
-        alerts += count.isNaN ? 0 : count;
+        alerts += count.isNaN ? 1 : count;
+      } else {
+        alerts++;
       }
     }
     return alerts;
