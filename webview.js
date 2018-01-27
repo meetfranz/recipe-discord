@@ -1,5 +1,19 @@
 import path from 'path';
 
+const getAlertCount = function getAlertCount(badges) {
+  let alerts = 0;
+  for(let i = 0; i < badges.length; i++) {
+    const badge = badges[i];
+    if(badge && badge.childNodes && badge.childNodes.length > 0) {
+      const count = parseInt(badge.childNodes[0].nodeValue, 10);
+      alerts += count.isNaN ? 1 : count;
+    } else {
+      alerts++;
+    }
+  }
+  return alerts;
+};
+
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
     // get direct messages
@@ -22,19 +36,4 @@ module.exports = (Franz) => {
 
   // Hide download message
   Franz.injectCSS(path.join(__dirname, 'service.css'));
-  
-  // Parse alert count from badges
-  function getAlertCount(badges) {
-    let alerts = 0;
-    for(let i = 0; i < badges.length; i++) {
-      const badge = badges[i];
-      if(badge && badge.childNodes && badge.childNodes.length > 0) {
-        const count = parseInt(badge.childNodes[0].nodeValue, 10);
-        alerts += count.isNaN ? 1 : count;
-      } else {
-        alerts++;
-      }
-    }
-    return alerts;
-  };
 };
