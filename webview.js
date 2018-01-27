@@ -1,6 +1,6 @@
 import path from 'path';
 
-module.exports = Franz => {
+module.exports = (Franz) => {
   const getMessages = function getMessages() {
     // get direct messages
     let direct = 0;
@@ -21,7 +21,7 @@ module.exports = Franz => {
   Franz.loop(getMessages);
 
   // Hide download message
-  Franz.injectCSS(_path2.default.join(__dirname, 'service.css'));
+  Franz.injectCSS(path.join(__dirname, 'service.css'));
   
   // Parse alert count from badges
   function getAlertCount(badges) {
