@@ -1,4 +1,3 @@
-// just pass through Franz
 module.exports = Franz => class Discord extends Franz {
   overrideUserAgent() {
     const useragent = window.navigator.userAgent;
