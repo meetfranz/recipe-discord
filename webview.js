@@ -3,7 +3,7 @@ import path from 'path';
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
     // get unread messages
-    const count = document.querySelectorAll('.guilds-wrapper .badge').length;
+    const count = document.querySelectorAll('.badge-1GsMF2').length;
 
     // set Franz badge
     Franz.setBadge(count);
