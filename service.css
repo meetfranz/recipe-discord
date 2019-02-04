@@ -1,3 +1,7 @@
 .notice {
   display: none;
 }
+
+div[class^='noticeDefault-'] {
+  display: none;
+}
