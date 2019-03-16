@@ -3,8 +3,9 @@ import path from 'path';
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
     // get unread messages
-    const direct = document.querySelectorAll('[class^="guildsWrapper"] [class*="badge"]').length;
-    const indirect = document.querySelectorAll('[class^="guildsWrapper"] [class^="guild-"]+[class*="unread-"]').length;
+    const serverbar = document.querySelector('[class^=unreadMentionsIndicatorTop] + div');
+    const direct = serverbar.querySelectorAll('[class*="badge"]').length;
+    const indirect = serverbar.querySelectorAll('[class*="unread-"]').length;
 
     // set Franz badge
     Franz.setBadge(direct, indirect);
