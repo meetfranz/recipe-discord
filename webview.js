@@ -4,8 +4,9 @@ module.exports = (Franz) => {
   const getMessages = function getMessages() {
     // get unread messages
     const serverbar = document.querySelector('[class^=unreadMentionsIndicatorTop] + div');
-    const direct = serverbar.querySelectorAll('[class*="badge"]').length;
-    const indirect = serverbar.querySelectorAll('[class*="unread-"]').length;
+    if (!serverbar) return;
+    const direct = serverbar.querySelectorAll('[class*="lowerBadge"]').length;
+    const indirect = 0;
 
     // set Franz badge
     Franz.setBadge(direct, indirect);
