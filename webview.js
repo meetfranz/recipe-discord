@@ -1,10 +1,14 @@
-import path from 'path';
+import path from "path";
 
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
     // get unread messages
-    const direct = document.querySelectorAll('[class^="guildsWrapper"] [class*="badge"]').length;
-    const indirect = document.querySelectorAll('[class^="guildsWrapper"] [class^="guild-"]+[class*="unread-"]').length;
+    const direct = document.querySelectorAll(
+      '[data-list-id="guildsnav"] [class*="numberBadge"]'
+    ).length;
+    const indirect = document.querySelectorAll(
+      '[class^="guildsWrapper"] [class^="guild-"]+[class*="unread-"]'
+    ).length;
 
     // set Franz badge
     Franz.setBadge(direct, indirect);
@@ -14,5 +18,5 @@ module.exports = (Franz) => {
   Franz.loop(getMessages);
 
   // Hide download message
-  Franz.injectCSS(path.join(__dirname, 'service.css'));
+  Franz.injectCSS(path.join(__dirname, "service.css"));
 };
